@@ -3,14 +3,11 @@ import users from './users.js'
 
 const getSortedUniqueSkills = users => {
    const getSkills = users.reduce((allSkills, user) => {
-      allSkills.push(...user.skills); return allSkills;}, []);
-      const uniqueSkills = []
-   for (let skill of getSkills){
-      if (!uniqueSkills.includes(skill)) uniqueSkills.push(skill)
+      allSkills.push(...user.skills); return allSkills;}, [])
+      .filter((skill, indexOfSkill, self) => self.indexOf(skill) === indexOfSkill).sort();
+  
+   return  getSkills;
    }
-   return uniqueSkills.sort()
-}
-
 
 console.log(getSortedUniqueSkills(users));
 // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure',
